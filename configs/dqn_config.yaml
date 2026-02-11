@@ -1,0 +1,47 @@
+# DQN Configuration for Job Scheduling
+# Default configuration for training DQN agent on job scheduling problem
+
+# Environment Configuration
+env:
+  name: "JobScheduling"
+  num_resources: 3
+  max_jobs: 10
+  job_arrival_rate: 0.3
+  max_duration: 10.0
+  max_priority: 5.0
+  time_horizon: 100.0
+
+# Algorithm Configuration
+algorithm: "dqn"
+learning_rate: 1e-4
+gamma: 0.99
+
+# DQN Specific Parameters
+dqn:
+  epsilon_start: 1.0
+  epsilon_end: 0.01
+  epsilon_decay: 10000
+  buffer_size: 100000
+  batch_size: 64
+  target_update_freq: 1000
+  use_double_dqn: true
+  use_noisy: false
+  use_per: false
+
+# Training Configuration
+training:
+  num_episodes: 10000
+  eval_freq: 100
+  eval_episodes: 10
+  save_freq: 1000
+  log_freq: 10
+
+# Logging Configuration
+logging:
+  use_wandb: false
+  project_name: "rl-scheduling"
+  experiment_name: "dqn-default"
+
+# Device and Reproducibility
+device: "auto"
+seed: 42

@@ -1,0 +1,46 @@
+# PPO Configuration for Job Scheduling
+# Default configuration for training PPO agent on job scheduling problem
+
+# Environment Configuration
+env:
+  name: "JobScheduling"
+  num_resources: 3
+  max_jobs: 10
+  job_arrival_rate: 0.3
+  max_duration: 10.0
+  max_priority: 5.0
+  time_horizon: 100.0
+
+# Algorithm Configuration
+algorithm: "ppo"
+learning_rate: 3e-4
+gamma: 0.99
+
+# PPO Specific Parameters
+ppo:
+  lam: 0.95
+  clip_ratio: 0.2
+  value_loss_coef: 0.5
+  entropy_coef: 0.01
+  max_grad_norm: 0.5
+  ppo_epochs: 4
+  buffer_size: 2048
+  batch_size: 64
+
+# Training Configuration
+training:
+  num_episodes: 10000
+  eval_freq: 100
+  eval_episodes: 10
+  save_freq: 1000
+  log_freq: 10
+
+# Logging Configuration
+logging:
+  use_wandb: false
+  project_name: "rl-scheduling"
+  experiment_name: "ppo-default"
+
+# Device and Reproducibility
+device: "auto"
+seed: 42
